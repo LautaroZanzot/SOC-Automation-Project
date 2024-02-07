@@ -26,10 +26,10 @@ The Detection Lab project aimed to establish a controlled environment for simula
 - Network analysis tools (such as Wireshark) for capturing and examining network traffic.
 - Telemetry generation tools to create realistic network traffic and attack scenarios.
 
-### Steps
+## Steps
 
-## Step 1
-#Desing a diagram
+### Step 1 - Desing a diagram
+
 
 ![1nd Workflow](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/82f81713-bdbb-4de2-945f-b99b139707b4)
 
