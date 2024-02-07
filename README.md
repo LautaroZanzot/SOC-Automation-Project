@@ -19,16 +19,22 @@ The Detection Lab project aimed to establish a controlled environment for simula
 ### Tools Used
 [Bullet Points - Remove this afterwards]
 
-- Network diagram tolls (such as Draw.io)
+- Network diagram tools (such as Draw.io)
 
 - 
 - Security Information and Event Management (SIEM) system for log ingestion and analysis.
 - Network analysis tools (such as Wireshark) for capturing and examining network traffic.
 - Telemetry generation tools to create realistic network traffic and attack scenarios.
 
-## Steps
-drag & drop screenshots here or use imgur and reference them using imgsrc
+### Steps
 
+## Step 1
+#Desing a diagram
 
+![1nd Workflow](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/82f81713-bdbb-4de2-945f-b99b139707b4)
 
-*Ref 1: Network Diagram*
+*Network Diagram*
+
+![Workflow, no diagram](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/d470a3a3-6301-4e5b-a439-f775d397398d)
+
+*Workflow*
