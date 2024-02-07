@@ -2,7 +2,7 @@
 
 ## Objective
 
-The Soc Automation Project aimed to establish a full load Wazuh instance with Source Integration along with functional case managment using TheHive. Primary create a diagram for planification and check how data will flow.
+The Soc Automation Project aimed to establish a full SOAR solution incorporating Wazuh instance with Source Integration along with functional case managment using TheHive.
 
 ### Skills Learned
 [Bullet Points - Remove this afterwards]
