@@ -103,6 +103,6 @@ sudo apt-get install -y thehive
 Default Credentials on port 9000
 credentials are 'admin@thehive.local' with a password of 'secret'
 
-
+6. Configure TheHive
    
 
