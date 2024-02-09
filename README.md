@@ -52,7 +52,7 @@ Start making the Network
 ![w10 client](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/41dee46d-babd-47b9-92f7-7e5c2547dcd1)
 
 3. Install Wazuh
-Install Wazuh 4.7
+
 curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
 
 Extract Wazuh Credentials
@@ -62,6 +62,7 @@ sudo tar -xvf wazuh-install-files.tar
 ![WazuhManager](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/9eb68cc8-7a97-4ea8-b7da-bbd7a72566a2)
 
 4. Install TheHive dependences
+
 Dependences
 apt install wget gnupg apt-transport-https git ca-certificates ca-certificates-java curl  software-properties-common python3-pip lsb-release
 
@@ -93,7 +94,7 @@ Create a jvm.options file under /etc/elasticsearch/jvm.options.d and put the fol
 -Xmx2g
 
 5. Install TheHive
-Install TheHive
+
 wget -O- https://archives.strangebee.com/keys/strangebee.gpg | sudo gpg --dearmor -o /usr/share/keyrings/strangebee-archive-keyring.gpg
 echo 'deb [signed-by=/usr/share/keyrings/strangebee-archive-keyring.gpg] https://deb.strangebee.com thehive-5.2 main' | sudo tee -a /etc/apt/sources.list.d/strangebee.list
 sudo apt-get update
