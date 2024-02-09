@@ -5,7 +5,6 @@
 The Soc Automation Project aimed to establish a full SOAR solution incorporating Wazuh instance with Source Integration along with functional case managment using TheHive.
 
 ### Skills Learned
-[Bullet Points - Remove this afterwards]
 
 - Security Automation with Shuffle SOAR
 - Incident Respone Planning and Execution
@@ -13,13 +12,12 @@ The Soc Automation Project aimed to establish a full SOAR solution incorporating
 - Scripting and Automation for Threar Mitigation
 
 ### Tools Used
-[Bullet Points - Remove this afterwards]
 
 - Network diagram tools (such as Draw.io)
 - Virtualization software VirtualBox
 - Cloud Virtualization with Azure
 - System Monitor for log collection(Sysmon)
-- TheHive
+- Security Incident Response (TheHive)
 
 
 ## Steps
