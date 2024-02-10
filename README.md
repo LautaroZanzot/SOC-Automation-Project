@@ -9,7 +9,7 @@ The Soc Automation Project aimed to establish a full SOAR solution incorporating
 - Security Automation with Shuffle SOAR
 - Incident Respone Planning and Execution
 - Case Management with TheHive
-- Scripting and Automation for Threar Mitigation
+- Scripting and Automation for Threat Mitigation
 
 ### Tools Used
 
@@ -18,6 +18,8 @@ The Soc Automation Project aimed to establish a full SOAR solution incorporating
 - Cloud Virtualization with Azure
 - System Monitor for log collection(Sysmon)
 - Security Incident Response (TheHive)
+- OpenSource NoSQL Database (Cassandra)
+- 
 
 
 ## Steps
@@ -138,6 +140,14 @@ index.seach
    hostname = ["127.0.0.1"] >>> <PUBLIC_IP> TheHive
 application.baseUrl = "http://localhost:9000" >>> <PUBLIC_IP>:9000 TheHive
 
+![hive1](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/d7008c5a-1866-4d60-84e0-64d600bb25e9)
+
+
 Now we can start the service "systemctl start thehive" and then enable it "systemctl enable thehive"
+
+7. Configure Wazuh
+
+To log in Wazuh-Manager we need the admin credentials, for this we found it going to "cd/wazuh-install-files" where we find wazuh-passwords.txt
+
 
 
