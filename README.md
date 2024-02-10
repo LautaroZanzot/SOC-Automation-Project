@@ -104,5 +104,40 @@ Default Credentials on port 9000
 credentials are 'admin@thehive.local' with a password of 'secret'
 
 6. Configure TheHive
-   
+
+Configure Cassandra
+nano /etc/cassandra/cassandra.yaml
+cluster_name: 'Test Cluster' >> 'SocProject' #Optional
+listen_addres: localhost >> <PUBLIC_IP> TheHive
+rpc_adres: localhost >> <PUBLIC_IP> TheHive
+seed_provider:
+   - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+     parameters:
+        - seeds: "127.0.0.1:7000" >> <PUBLIC_IP>:7000 TheHive
+Stop cassandra service, delete old files rm -rf /var/lib/cassandra/*
+Start cassandra service
+
+Configure elasticsearch
+nano /etc/elasticsearch/elasticsearch.yml
+#cluster.name : my-application >> cluster.name: thehive
+#node.name: node-1 >> node.name: node-1
+#network.host: 192.168.0.1 >> network.host: <PUBLIC_IP> TheHive
+#http.port: 9200 >> http.port: 9200
+#cluster.initial_master_nodes: ["node-1","node-2"] >> cluster.initial_master_nodes: ["node-1"]
+
+Now we can start the service "systemctl start elasticsearch" and then enable it "systemctl enable elasticsearch"
+
+At this moment we start configuring TheHive
+First of all, we have to change the permissions of the hive in /opt/thp "chown -R thehive:thehive /opt/thp"
+Now we can configure thehhive applicattion conf
+nano /etc/thehive/application.conf
+db.janusgraph
+   hostname = ["127.0.0.1"] >>> <PUBLIC_IP> TheHive
+   cluster-name = thp >> SocProject
+index.seach
+   hostname = ["127.0.0.1"] >>> <PUBLIC_IP> TheHive
+application.baseUrl = "http://localhost:9000" >>> <PUBLIC_IP>:9000 TheHive
+
+Now we can start the service "systemctl start thehive" and then enable it "systemctl enable thehive"
+
 
