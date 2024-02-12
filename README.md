@@ -19,8 +19,8 @@ The Soc Automation Project aimed to establish a full SOAR solution incorporating
 - System Monitor for log collection(Sysmon)
 - Security Incident Response (TheHive)
 - OpenSource NoSQL Database (Cassandra)
+- Search and analytics engine (Elasticsearch)
 - 
-
 
 ## Steps
 
@@ -158,3 +158,7 @@ Click on Add agent, select OS system of the new agent (in this case W10), server
 At this moment we can query events.
 
 ![wazuhagent](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/929ee753-0675-48da-8784-8caeac9218bd)
+
+8. Windows telemetry
+
+Config ossec.conf to make analysis with sysmon
