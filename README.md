@@ -21,6 +21,7 @@ The Soc Automation Project aimed to establish a full SOAR solution incorporating
 - OpenSource NoSQL Database (Cassandra)
 - Search and analytics engine (Elasticsearch)
 - SOAR (Shuffle)
+- Email fo Online Dinamyc Analisis (SquareX)
 
 ## Steps
 
@@ -257,4 +258,53 @@ Now, we start with TheHive, click en apps, search thehive, activate it and drag 
 LogIn TheHive with default credentials, the create a new organisation, click into it, add two users, one as normal with analyst profile, and the other (SOAR) as service and profile as analyst.
 Create and API key for SOAR user.
 In shuffle select TheHive, and click on "+" in authenticate section and paste te SOAR APIkey, in url <PUBLIC_IP> TheHive, onfind actions change it to create alert, go to "Date" "+" button and execution argument "utcTime", on Description "Mimikatz Detected on host: "+" button and select host option, from user: "+" button and select user option, flag = false, PAP = 2, Source = Wazuh, Sourceref = "Rule:10002", Status = New, Summary Mimikatz Detected on host: "+" button and select host option on process ID: "+" button and select process_id option, Tittle = "+" button and select title option, Tlp (Trafic light protocol) = 2, Type = Internal
+
+If we test the workflow we can see an alert in TheHive like this:
+
+![alert thehive](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/04842fe5-bc14-4edc-9cae-34758d777b4a)
+
+
+Next step "Send Emal"
+
+Type in apps "email" and select email option, for avoid the use of our personal email we can use SquareX as describes itself "SquareX's browser extension keeps you safe from malicious activity online. However, unlike existing products that block access to files and websites, SquareX allows you to open even suspicious or malicious resources fearlessly! " so we can browse to the suspicius site safety and acquire the information for the investigation.
+
+Well, select email in Recipients = SquareX email, Subject = Mimikatz Detected, Body = Time = "+" button and select utctime option / Tittle = "+" button and select title option /host: "+" button and select host option.
+
+For the response setup we need to create a VM on cloud and create a rule that allow all tcp connections.
+We can run "iptables -P INPUT ACCEPT"  to accept all the traffic
+Or in this case we are going to use port 55000 so we can run "iptables -I INPUT -p tcp -m tcp --dport 55000 -j ACCEPT && service iptables sav"
+or we can flush it
+So we can flush al iptables:
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -t raw -F
+iptables -t raw -X
+iptables -t security -F
+iptables -t security -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+
+Then
+iptables -A INPUT -i lo -j ACCEPT -m comment --comment "Allow all loopback traffic"
+iptables -A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT -m comment --comment "Drop all traffic to 127 that doesn't use lo"
+iptables -A OUTPUT -j ACCEPT -m comment --comment "Accept all outgoing"
+iptables -A INPUT -j ACCEPT -m comment --comment "Accept all incoming"
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT -m comment --comment "Allow all incoming on established connections"
+iptables -A INPUT -j REJECT -m comment --comment "Reject all incoming"
+iptables -A FORWARD -j REJECT -m comment --comment "Reject all forwarded"
+
+And finally save it with "iptables-save > /etc/network/iptables.rules" #Or wherever your iptables.rules file is
+
+Then go to Apps search for Http select it and drag it, in find actiones select Curl, Statement = curl -u USER:PASSWORD>WazuhAPIuser> -k -x GET "https://<PUBLIC_IP>WAZUH-IP:55000/security/user/authenticate?raw=true
+We need this to get de API capability for get JsonWebToken.
+
+In Shuffle apps search Wazuh select it and drag it in Find Actions = Run Command, APIkey "+" button and select GETAPI option (this option was created previously), URL = <WAZUH_PUBLIC_IP>, AgentID "+" button and select agent_id option.
+On WazuhManager Console nano /var/ossec/etc/ossec.conf go to the bottom and search "Active response", uncomment active-response section.
+
+![active-response](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/ae9991a0-ca65-43fe-a4ca-daf852dc4e9c)
 
