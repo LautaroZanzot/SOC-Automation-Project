@@ -149,5 +149,12 @@ Now we can start the service "systemctl start thehive" and then enable it "syste
 
 To log in Wazuh-Manager we need the admin credentials, for this we found it going to "cd/wazuh-install-files" where we find wazuh-passwords.txt
 
+![wazu](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/7f85bc60-dc5d-47e4-acb5-277380aba09b)
 
+Click on Add agent, select OS system of the new agent (in this case W10), server addres = <PUBLIC_IP> Wazu, and Run the following command on the Windows machine and the start the server.
 
+![wazuhclients](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/30e7636f-04f1-46ad-851c-e54acbb4be78)
+
+At this moment we can query events.
+
+![wazuhagent](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/929ee753-0675-48da-8784-8caeac9218bd)
