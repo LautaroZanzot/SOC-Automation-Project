@@ -253,5 +253,8 @@ Primary virustotal dont show anything because, it go to /files/report so we need
 
 ![virustotal](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/2c4b6622-b7c9-4502-993d-9d143b357550)
 
-
+Now, we start with TheHive, click en apps, search thehive, activate it and drag it to workflow.
+LogIn TheHive with default credentials, the create a new organisation, click into it, add two users, one as normal with analyst profile, and the other (SOAR) as service and profile as analyst.
+Create and API key for SOAR user.
+In shuffle select TheHive, and click on "+" in authenticate section and paste te SOAR APIkey, in url <PUBLIC_IP> TheHive, onfind actions change it to create alert, go to "Date" "+" button and execution argument "utcTime"
 
