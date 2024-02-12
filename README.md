@@ -244,6 +244,14 @@ On Change Me in Find Actions tipe Regex and select Regex capture group and on in
 
 ![chatgpt](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/8541086f-ca52-4116-8a1b-16a5584b625d)
 
+Now, we going to use virustotal, first create an accoutn and copy your API key. On shuffle seach for virustotal, activate and drag to the workflow.
+On Find Actions select Get a hash report, paste your API Key, and copy the regex command of Change Me.
+Primary virustotal dont show anything because, it go to /files/report so we need to fix this. So go to Apps in workflow, select the open new windows of virustotal, click on fork to edit it, go for "GET a hash report".
+
+![getrerpot](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/1efdc76d-b961-4073-a69b-179e4a120cc0)
+*change URL path/ Curl Statement to /files/{id} sumbit and save it.
+
+![virustotal](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/2c4b6622-b7c9-4502-993d-9d143b357550)
 
 
 
