@@ -20,7 +20,7 @@ The Soc Automation Project aimed to establish a full SOAR solution incorporating
 - Security Incident Response (TheHive)
 - OpenSource NoSQL Database (Cassandra)
 - Search and analytics engine (Elasticsearch)
-- 
+- SOAR (Shuffle)
 
 ## Steps
 
@@ -212,6 +212,38 @@ Paste the rule that we copy and modify
 ![customrule](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/15ae04d1-f76c-40de-8ee3-cd33b122b98e)
 
 Custom rules start in 100000 and the levels of priority are 1 to 15, where 15 has the mayor priority
-Save it and restart the manager
-To probe the rule we can change ne name of mimikatz in our w10 client and try to trigger it
-    
+Save it and restart the manager.
+
+To probe the rule we can change ne name of mimikatz in our w10 client and try to trigger it.
+
+10: Configure Shuffle
+Their workflow will be
+- Mimikatz Alert Sent to Shuffle
+- Shuffle Receives Mimikatz Alert, extract SHA256 hash from file
+- Check Reputation Score w/VirusTotal
+- Send Detail to TheHive to Create Alert
+- Send Email to SOC Analyst to Begin Investigation
+
+Go to the website shuffle.io and create or ouw workflow.
+At this moment we start adding our applications, go to triggers and select Webhook and copy the WebhookURI.
+Click on Change Me Icon. On Find Actions = Repeat back to me and on Call click on "+" button and selec execution argument.
+On wazuhManager machine we need to configure to connect with shuffle
+nano /var/ossec/etc/oseec.conf
+
+Under global tag paste the WebhookURI
+
+![webhookinte](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/f8dce093-8f73-4b93-8975-f02625717872)
+
+Keep in mind the identation
+Replace hook_url including id and the copy WebhookURI, change the level tag to ruleId tag = <rule_id>10002</rule_id>
+Then restart the service and run mimikatz on the client to chekck if its working, will have all te information.
+
+![shuffle](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/b1c361fa-61ec-4c9f-b52b-6bb13a31f6a5)
+
+On Change Me in Find Actions tipe Regex and select Regex capture group and on input data click on "+" button, execution argument and select "hashes". Then in Regex we need to create a regex to parse the sha256 value, so we will use ChatGPT.
+
+![chatgpt](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/8541086f-ca52-4116-8a1b-16a5584b625d)
+
+
+
+
