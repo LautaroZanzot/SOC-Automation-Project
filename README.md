@@ -308,3 +308,12 @@ On WazuhManager Console nano /var/ossec/etc/ossec.conf go to the bottom and sear
 
 ![active-response](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/ae9991a0-ca65-43fe-a4ca-daf852dc4e9c)
 
+On Shuffle select Wazuh, Command = firewall-drop0 (0 because timeout=no), Alert {"data":{"script":"$exec.all_fields.data.scrip"}}
+
+Now Set Up an User Input
+
+On Email <SQUAREX_EMAIL>, Description = Would you like block this source IP: $exec.all_fields.data.scrip
+
+![shuffle2](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/cb54f210-df69-4a54-a865-5d2c0ae6eea5)
+
+At this moment, everything should work
