@@ -256,5 +256,5 @@ Primary virustotal dont show anything because, it go to /files/report so we need
 Now, we start with TheHive, click en apps, search thehive, activate it and drag it to workflow.
 LogIn TheHive with default credentials, the create a new organisation, click into it, add two users, one as normal with analyst profile, and the other (SOAR) as service and profile as analyst.
 Create and API key for SOAR user.
-In shuffle select TheHive, and click on "+" in authenticate section and paste te SOAR APIkey, in url <PUBLIC_IP> TheHive, onfind actions change it to create alert, go to "Date" "+" button and execution argument "utcTime"
+In shuffle select TheHive, and click on "+" in authenticate section and paste te SOAR APIkey, in url <PUBLIC_IP> TheHive, onfind actions change it to create alert, go to "Date" "+" button and execution argument "utcTime", on Description "Mimikatz Detected on host: "+" button and select host option, from user: "+" button and select user option, flag = false, PAP = 2, Source = Wazuh, Sourceref = "Rule:10002", Status = New, Summary Mimikatz Detected on host: "+" button and select host option on process ID: "+" button and select process_id option, Tittle = "+" button and select title option, Tlp (Trafic light protocol) = 2, Type = Internal
 
