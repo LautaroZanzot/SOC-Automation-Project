@@ -161,4 +161,45 @@ At this moment we can query events.
 
 8. Windows telemetry
 
-Config ossec.conf to make analysis with sysmon
+Config ossec.conf C:\...\ProgramFiles(x86)\ossec-agent make log analysis with sysmon
+<localfile>
+   <location>Microsoft-Windows-Sysmon/Operational</location> (operational channel)
+   <log_format>syslog</log_format>
+</localfile>
+Restart Wazu.svc
+
+
+9. Wazuh Dashboard configuration alert
+
+On Wazuh Machine enable logs alert
+nano /var/ossec/etc/ossec.conf
+<ossec_config>
+   ...
+   <logall>no</logall> >> <logall>yes</logall>
+Making that wazuh put all logs in /var/ossec/logs/archives/archives/
+
+At this moment we need to enable the filebeat module of archives to make that wazuh can save the logs in archives
+nano/etc/filebeat/filebeat.yml
+....
+filebeat.modules_
+   -module: wazuh
+   ....
+   archives:
+      enables: false >> enables: true
+
+Create a new index for archives under wazuh-alerts
+Define an index pattern = wazu-archives-**
+Timefiled = timestamp
+
+Only logs that trigger the rules will show up, for that we need to configure to show all logs if you want.
+For probe this rule we can execute mikmikatz in our W10 Client and grep the archives to see if its triggering.
+So execute mimikatz and then in /var/ossec/logs/archives cat archives.json | grep -i mimikatz 
+If mimikatz display in the json but isnt in wazuhManager, can be enforced restarting wazuhManager service.
+To make a rule to trigger mimikatz we can use the originalFileName, because if we use the image the attaker can change the name and easily bypass the rule 
+
+To create a rule in Wazuh manager > Managment > Rules
+
+![wazuh rules](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/4b15e9e7-51a0-4678-b295-e28e44e98d82)
+
+
+    
