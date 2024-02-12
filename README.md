@@ -201,5 +201,17 @@ To create a rule in Wazuh manager > Managment > Rules
 
 ![wazuh rules](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/4b15e9e7-51a0-4678-b295-e28e44e98d82)
 
+ManageRules > search "sysmon" > "0800-sysmon_id_1.xml" (id_1 is process creation)
+We go here only to make a copy of a rule for our CustomRule
 
+![sysmonrule](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/28049099-6a0c-40aa-81f9-b9635e012f5e)
+
+Go to Custom Rules and edit local_rules.xml
+Paste the rule that we copy and modify
+
+![customrule](https://github.com/LautaroZanzot/SOC-Automation-Project/assets/33968558/15ae04d1-f76c-40de-8ee3-cd33b122b98e)
+
+Custom rules start in 100000 and the levels of priority are 1 to 15, where 15 has the mayor priority
+Save it and restart the manager
+To probe the rule we can change ne name of mimikatz in our w10 client and try to trigger it
     
